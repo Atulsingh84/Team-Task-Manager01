@@ -194,8 +194,8 @@ export function AuthPage({ error, onEmailAuth, onVerifyEmail, onForgotPassword, 
             <Label>
               Account type
               <Select value={authForm.accountRole} onChange={(event) => setAuthForm({ ...authForm, accountRole: event.target.value })} disabled={isLoading}>
-                <option value="User">Admin</option>
-                <option value="Admin">User</option>
+                <option value="User">user</option>
+                <option value="Admin">Admin</option>
               </Select>
             </Label>
 

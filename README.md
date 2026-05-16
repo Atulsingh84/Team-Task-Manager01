@@ -122,6 +122,18 @@ Toggle between **Light Mode** and **Dark Mode** using the theme button in the to
 - Safari (latest)
 - Edge (latest)
 
+## 🔑 Demo Credentials
+
+### 👤 User Account
+
+- Email: `atul3@gmail.com`
+- Password: `369258147`
+
+### 🛠️ Admin Account
+
+- Email: `atul2@gmail.com`
+- Password: `369258147`
+
 ---
 
 ## ❓ FAQ
