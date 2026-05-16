@@ -8,7 +8,7 @@ import { Input } from "../ui/input.jsx";
 import { Select } from "../ui/select.jsx";
 import { api } from "../../api.js";
 
-export function MembersView({ project, canManage, onAddMember }) {
+export function MembersView({ project, canManage, onAddMember, onRemoveMember }) {
   const members = project?.members || [];
   const [memberForm, setMemberForm] = useState({ userId: "", role: "Member" });
   const [searchQuery, setSearchQuery] = useState("");
@@ -73,6 +73,7 @@ export function MembersView({ project, canManage, onAddMember }) {
                   <th>Email</th>
                   <th>Role</th>
                   <th>Joined At</th>
+                  {canManage ? <th>Actions</th> : null}
                 </tr>
               </thead>
               <tbody>
@@ -87,6 +88,19 @@ export function MembersView({ project, canManage, onAddMember }) {
                     <td>{member.user.email}</td>
                     <td><Badge variant={member.role === "Admin" ? "info" : "success"}>{member.role}</Badge></td>
                     <td>Project member</td>
+                    {canManage ? (
+                      <td>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          type="button"
+                          onClick={() => onRemoveMember(member._id)}
+                        >
+                          <X size={14} />
+                          Remove
+                        </Button>
+                      </td>
+                    ) : null}
                   </tr>
                 ))}
               </tbody>

@@ -121,6 +121,15 @@ export function useWorkspace() {
     setActiveProject(data.project);
   }
 
+  async function removeMember(memberId) {
+    if (!activeProject) {
+      return;
+    }
+
+    const data = await remove(`/projects/${activeProject._id}/members/${memberId}`);
+    setActiveProject(data.project);
+  }
+
   async function createTask(taskForm) {
     if (!activeProject) {
       return;
@@ -186,6 +195,7 @@ export function useWorkspace() {
     createProject,
     openProject,
     addMember,
+    removeMember,
     createTask,
     changeTaskStatus,
     deleteTask,

@@ -35,7 +35,14 @@ export function Workspace({ workspace, theme, onToggleTheme }) {
       />
 
       <section className="content">
-        <Topbar title={titles[activeView]} role={workspace.currentRole} theme={theme} onToggleTheme={onToggleTheme} onNewProject={openProjectsView} />
+        <Topbar
+          title={titles[activeView]}
+          role={workspace.currentRole}
+          theme={theme}
+          onToggleTheme={onToggleTheme}
+          onNewProject={openProjectsView}
+          onManageTeam={() => setActiveView("members")}
+        />
 
         {workspace.loading ? (
           <Card className="empty-state">Loading workspace...</Card>
@@ -81,6 +88,7 @@ export function Workspace({ workspace, theme, onToggleTheme }) {
                 project={workspace.activeProject}
                 canManage={workspace.canManage}
                 onAddMember={(memberForm) => workspace.runAction(() => workspace.addMember(memberForm))}
+                onRemoveMember={(memberId) => workspace.runAction(() => workspace.removeMember(memberId))}
               />
             )}
 
