@@ -8,7 +8,7 @@ const navItems = [
   { key: "projects", label: "Projects", icon: FolderKanban },
   { key: "tasks", label: "Tasks", icon: ListTodo },
   { key: "calendar", label: "Calendar", icon: CalendarDays },
-  { key: "members", label: "Members", icon: Users },
+  { key: "members", label: "Team", icon: Users },
   { key: "settings", label: "Settings", icon: Settings }
 ];
 
@@ -21,7 +21,7 @@ export function Sidebar({ user, activeView, onChangeView, onLogout }) {
         </div>
         <div>
           <CardTitle>TaskFlow</CardTitle>
-          <CardDescription>Project workspace</CardDescription>
+          <CardDescription>Your Workspace</CardDescription>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ export function Sidebar({ user, activeView, onChangeView, onLogout }) {
       <div className="sidebar-footer">
         <button className="support-link" type="button">
           <HelpCircle size={15} />
-          Help & Support
+          Get Help
         </button>
         <div className="user-tile">
           <Avatar name={user.name} />
