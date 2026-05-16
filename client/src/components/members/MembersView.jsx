@@ -8,7 +8,7 @@ import { Input } from "../ui/input.jsx";
 import { Select } from "../ui/select.jsx";
 import { api } from "../../api.js";
 
-export function MembersView({ project, canManage, onAddMember, onRemoveMember }) {
+export function MembersView({ project, canAddMembers, canManage, onAddMember, onRemoveMember }) {
   const members = project?.members || [];
   const [memberForm, setMemberForm] = useState({ userId: "", role: "Member" });
   const [searchQuery, setSearchQuery] = useState("");
@@ -114,7 +114,7 @@ export function MembersView({ project, canManage, onAddMember, onRemoveMember })
           <CardTitle>Roles</CardTitle>
         </CardHeader>
         <CardContent>
-          {canManage && (
+          {(canAddMembers || canManage) && (
             <form className="member-form invite-form" onSubmit={submitMember}>
               <div style={{ position: "relative" }}>
                 <Input
@@ -231,7 +231,7 @@ export function MembersView({ project, canManage, onAddMember, onRemoveMember })
               </div>
               <div>
                 <strong>Member</strong>
-                <span>Can view and manage tasks in assigned projects.</span>
+                <span>Can add new members and participate in projects, but cannot remove other users.</span>
               </div>
             </div>
           </div>

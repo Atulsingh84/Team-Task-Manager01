@@ -13,13 +13,14 @@ export function useWorkspace() {
 
   const currentRole = useMemo(() => {
     if (!activeProject || !user) {
-      return "Member";
+      return null;
     }
 
-    return activeProject.members.find((member) => member.user._id === user.id)?.role || "Member";
+    return activeProject.members.find((member) => member.user._id === user.id)?.role || null;
   }, [activeProject, user]);
 
   const canManage = currentRole === "Admin";
+  const canAddMembers = currentRole === "Admin" || currentRole === "Member";
 
   useEffect(() => {
     if (user) {
@@ -186,6 +187,7 @@ export function useWorkspace() {
     loading,
     currentRole,
     canManage,
+    canAddMembers,
     emptyTask: createEmptyTask(activeProject),
     setError,
     runAction,

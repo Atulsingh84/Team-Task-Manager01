@@ -86,6 +86,7 @@ export function Workspace({ workspace, theme, onToggleTheme }) {
             {activeView === "members" && workspace.activeProject && (
               <MembersView
                 project={workspace.activeProject}
+                canAddMembers={workspace.canAddMembers}
                 canManage={workspace.canManage}
                 onAddMember={(memberForm) => workspace.runAction(() => workspace.addMember(memberForm))}
                 onRemoveMember={(memberId) => workspace.runAction(() => workspace.removeMember(memberId))}
