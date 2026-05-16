@@ -5,11 +5,12 @@ import { Button } from "../ui/button.jsx";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card.jsx";
 import { Input } from "../ui/input.jsx";
 import { Label } from "../ui/label.jsx";
+import { Select } from "../ui/select.jsx";
 import { Tabs, TabsTrigger } from "../ui/tabs.jsx";
 
 export function AuthPage({ error, onEmailAuth, onVerifyEmail, onForgotPassword, onResetPassword }) {
   const [authMode, setAuthMode] = useState("login");
-  const [authForm, setAuthForm] = useState({ name: "", email: "", password: "" });
+  const [authForm, setAuthForm] = useState({ name: "", email: "", password: "", accountRole: "User" });
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -189,6 +190,14 @@ export function AuthPage({ error, onEmailAuth, onVerifyEmail, onForgotPassword, 
                 <Input value={authForm.name} onChange={(event) => setAuthForm({ ...authForm, name: event.target.value })} required disabled={isLoading} />
               </Label>
             )}
+
+            <Label>
+              Account type
+              <Select value={authForm.accountRole} onChange={(event) => setAuthForm({ ...authForm, accountRole: event.target.value })} disabled={isLoading}>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+              </Select>
+            </Label>
 
             <Label>
               Email

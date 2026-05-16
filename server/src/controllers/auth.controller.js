@@ -15,7 +15,8 @@ function sendSession(response, user) {
       id: user._id,
       name: user.name,
       email: user.email,
-      avatar: user.avatar
+      avatar: user.avatar,
+      accountRole: user.accountRole || "User"
     }
   });
 }
@@ -28,6 +29,7 @@ export async function signup(request, response) {
     if (!existingUser.emailVerified && existingUser.authProvider === "email") {
       existingUser.name = request.body.name;
       existingUser.password = request.body.password;
+      existingUser.accountRole = request.body.accountRole || existingUser.accountRole;
       existingUser.emailVerificationToken = verificationToken;
       existingUser.emailVerificationExpires = new Date(Date.now() + 1000 * 60 * 60);
       await existingUser.save();
@@ -69,6 +71,10 @@ export async function login(request, response) {
     throw new HttpError(401, "Invalid email or password");
   }
 
+  if (request.body.accountRole && user.accountRole !== request.body.accountRole) {
+    throw new HttpError(403, "Selected role does not match this account");
+  }
+
   // Email verification skipped for now - TODO: Enable when email is configured
   // if (!user.emailVerified) {
   //   throw new HttpError(403, "Please verify your email before logging in");
@@ -102,7 +108,8 @@ export async function loginWithGoogle(request, response) {
         googleId: profile.sub,
         avatar: profile.picture || "",
         authProvider: "google",
-        emailVerified: true
+        emailVerified: true,
+        accountRole: "User"
       },
       $set: {
         avatar: profile.picture || "",

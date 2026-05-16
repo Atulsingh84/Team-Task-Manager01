@@ -66,7 +66,9 @@ export function useWorkspace() {
   async function loginWithEmail(authMode, authForm) {
     setError("");
     const path = authMode === "login" ? "/auth/login" : "/auth/signup";
-    const body = authMode === "login" ? { email: authForm.email, password: authForm.password } : authForm;
+    const body = authMode === "login"
+      ? { email: authForm.email, password: authForm.password, accountRole: authForm.accountRole }
+      : authForm;
     const result = await post(path, body);
 
     if (!result.token) {

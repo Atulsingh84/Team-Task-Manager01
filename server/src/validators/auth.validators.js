@@ -3,12 +3,14 @@ import { z } from "zod";
 export const signupSchema = z.object({
   name: z.string().trim().min(2).max(80),
   email: z.string().trim().email(),
-  password: z.string().min(8).max(100)
+  password: z.string().min(8).max(100),
+  accountRole: z.enum(["Admin", "User"]).default("User")
 });
 
 export const loginSchema = z.object({
   email: z.string().trim().email(),
-  password: z.string().min(1)
+  password: z.string().min(1),
+  accountRole: z.enum(["Admin", "User"]).optional()
 });
 
 export const googleLoginSchema = z.object({
