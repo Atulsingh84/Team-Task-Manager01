@@ -16,7 +16,7 @@ function sendSession(response, user) {
       name: user.name,
       email: user.email,
       avatar: user.avatar,
-      accountRole: user.accountRole || "User"
+      accountRole: user.accountRole || "Admin"
     }
   });
 }
@@ -109,7 +109,7 @@ export async function loginWithGoogle(request, response) {
         avatar: profile.picture || "",
         authProvider: "google",
         emailVerified: true,
-        accountRole: "User"
+        accountRole: "Admin"
       },
       $set: {
         avatar: profile.picture || "",
