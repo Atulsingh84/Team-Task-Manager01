@@ -126,7 +126,7 @@ Toggle between **Light Mode** and **Dark Mode** using the theme button in the to
 
 ### 👤 User Account
 
-- Email: `atul3@gmail.com`
+- Email: `atul4@gmail.com`
 - Password: `369258147`
 
 ### 🛠️ Admin Account
