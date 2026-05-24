@@ -231,7 +231,7 @@ export function MembersView({ project, canAddMembers, canManage, onAddMember, on
               </div>
               <div>
                 <strong>Member</strong>
-                <span>Can add new members and participate in projects, but cannot remove other users.</span>
+                <span>Can participate in projects, but cannot add or remove other users.</span>
               </div>
             </div>
           </div>

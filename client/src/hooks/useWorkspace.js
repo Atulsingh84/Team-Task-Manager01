@@ -20,7 +20,7 @@ export function useWorkspace() {
   }, [activeProject, user]);
 
   const canManage = currentRole === "Admin";
-  const canAddMembers = currentRole === "Admin" || currentRole === "Member";
+  const canAddMembers = currentRole === "Admin";
 
   useEffect(() => {
     if (user) {
