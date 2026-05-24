@@ -4,7 +4,7 @@ export const signupSchema = z.object({
   name: z.string().trim().min(2).max(80),
   email: z.string().trim().email(),
   password: z.string().min(8).max(100),
-  accountRole: z.enum(["Admin", "User"]).default("User")
+  accountRole: z.enum(["Admin", "User"]).default("Admin")
 });
 
 export const loginSchema = z.object({

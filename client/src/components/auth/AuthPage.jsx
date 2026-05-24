@@ -10,7 +10,7 @@ import { Tabs, TabsTrigger } from "../ui/tabs.jsx";
 
 export function AuthPage({ error, onEmailAuth, onVerifyEmail, onForgotPassword, onResetPassword }) {
   const [authMode, setAuthMode] = useState("login");
-  const [authForm, setAuthForm] = useState({ name: "", email: "", password: "", accountRole: "User" });
+  const [authForm, setAuthForm] = useState({ name: "", email: "", password: "", accountRole: "Admin" });
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
